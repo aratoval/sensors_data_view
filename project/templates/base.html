@@ -1,0 +1,81 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" content="text/css" href="{% static "css/style.css" %}">
+    <title>{% block title %}{% endblock %}</title>
+    {% block script %}
+   {% endblock %}
+  </head>
+  <body class="body-background">
+
+    <header>
+
+        <div class="login">
+
+            {% if not request.user.is_authenticated %}
+                <form class="login-form" action="{% url 'index' %}" method="post">
+                    {% csrf_token %}
+                    {{ login_form.as_p }}
+                    <input class="login-button" type="submit" value="Login">
+                </form>
+            {% else %}
+                <form action="{% url 'logout-view' %}" method="post">
+                    {% csrf_token %}
+                    <input class="login-button" type="submit" value="Logout {{ request.user }}">
+                </form>
+            {% endif %}
+
+            <p>
+            <center>{% if message %}
+                {{ message }}
+            {% endif %}
+        </center>
+            </p>
+        </div>
+
+        <h1 class="header-h1">Welcome in Project Utopia home page!!!</h1>
+
+    {% if request.user.is_authenticated %}
+    <div class="div-top">
+    <div class="menu-div center-content">
+        <div class="side-by-side">
+            <a href="{% url "index" %}">Home</a>
+        </div>
+        <div class="side-by-side">
+            <a href="{% url "view-sensors" %}">Sensors</a>
+        </div>
+        <div class="side-by-side menu-div">
+            <a href="{% url "view-pressures" %}">Data</a>
+        </div>
+    </div>
+    <br>
+    </div>
+    {% endif %}
+    </header>
+
+
+        {% block content %}
+        {% endblock %}
+
+
+    <footer>
+        <div class="footer-div-content">
+        <p><strong>
+            Today is {{ now }}
+            | version: {{ version }}
+        </strong>
+        </p>
+            <p>
+            <center><h1>Jestem daltonistą :p</h1></center>
+            </p>
+        </div>
+    </footer>
+  </body>
+</html>
