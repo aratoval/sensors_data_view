@@ -82,12 +82,8 @@ WSGI_APPLICATION = 'Project_CodersLab.sensors-data-view.wsgi.application'
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': '',
-            'USER': '',
-            'PASSWORD': '',
-            'HOST': '',
-            'PORT': '3306',
             'OPTIONS': {
+                'read_default_file': '/home/pi/secret/my.cnf',
                 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
                 'autocommit': True,
             },
