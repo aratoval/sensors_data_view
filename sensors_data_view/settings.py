@@ -25,7 +25,10 @@ SECRET_KEY = 'ia122fqo4_%n=l(m&dmg&&4mqcr74*l1i(go#1iv)=vlpqlht0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost',
+                 '127.0.0.1',
+                 'utopiac.ddns.net',
+                 '192.168.0.5']
 
 
 # Application definition
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'envir_monitoring',
 ]
 
 MIDDLEWARE = [
@@ -75,9 +79,13 @@ WSGI_APPLICATION = 'sensors_data_view.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+            'ENGINE': 'django.db.backends.mysql',
+            'OPTIONS': {
+                'read_default_file': '../secret/my.cnf',
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+                'autocommit': True,
+            },
+        }
 }
 
 
@@ -117,4 +125,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = ('/static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
