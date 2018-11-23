@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from data_view.views import under_construction
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', under_construction)
 ]
