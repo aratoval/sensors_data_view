@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import handler404, handler500
 from data_view.views import under_construction
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', under_construction)
+
 ]
+
+handler404 = under_construction
+handler500 = under_construction
+
