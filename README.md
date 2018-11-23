@@ -1,7 +1,7 @@
 # sensors_data_view
 This is a final project at the end of the 'Back-End Developer: Python' course at Coders Lab.
 
- > Projekt sensors-data-view jest aplikacją webową przeznaczoną do zarządzania czujnikami podłączonymi do Raspberry pi oraz do wizualizacji tychże danych.
+ + Projekt sensors-data-view jest aplikacją webową przeznaczoną do zarządzania czujnikami podłączonymi do Raspberry pi oraz do wizualizacji tychże danych.
   Czujniki, z których zbierane są dane to np.: czujnik ciśnienia atmosferycznego, czujnik
 oświetlania, akcelerometr, magnetometr, wilgotnościomierz, termometr cyfrowy, przetwornik
 analogowo-cyfrowy i cyfrowo-analogowy, czujnik jakości powietrza itp. Komunikacja
