@@ -17,11 +17,21 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import handler404, handler500
 from data_view.views import my_handler404
+from django.conf.urls import url
+from data_view.views import SensorAddView, SensorsView, Index, LogoutView
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
+    url(r'^$', Index.as_view(), name='index'),
     path('admin/', admin.site.urls),
-]
+    url(r'^add_sensor/', SensorAddView.as_view(), name='add-sensor'),
+    url(r'^view_sensors/', SensorsView.as_view(), name='view-sensors'),
+    url(r'^logout', LogoutView.as_view(), name='logout-view'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = my_handler404
 handler500 = my_handler404

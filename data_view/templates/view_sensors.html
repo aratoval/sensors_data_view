@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content-div">
+    <div class="div-top">
+    <form>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Sensor type</th>
+            <th>Location</th>
+            <th>Is active</th>
+            <th>Add date</th>
+            <th>Remove date</th>
+            <th>Delete sensor?</th>
+        </tr>
+
+        {% for sensor in sensors %}
+            <tr>
+                <td>{{ sensor.id }}</td>
+                <td>{{ sensor.name }}</td>
+                <td>{{ sensor.sensor_type }}</td>
+                <td>{{ sensor.location }}</td>
+                <td>{{ sensor.is_active }}</td>
+                <td>{{ sensor.add_datetime }}</td>
+                <td>{{ sensor.remove_datetime }}</td>
+                <td><input name="del" type="checkbox" value="{{ sensor.id }}"></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <input type="submit" value="Delete sensor" formmethod="post">
+    <input type="button" value="Add sensor" onclick="window.location.href='{% url "add-sensor" %}'"/>
+    </form>
+    </div>
+    </div>
+{% endblock %}
