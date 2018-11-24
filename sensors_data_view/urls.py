@@ -16,13 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import handler404, handler500
-from data_view.views import under_construction
+from data_view.views import my_handler404
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
 ]
 
-handler404 = under_construction
-handler500 = under_construction
+handler404 = my_handler404
+handler500 = my_handler404
 
