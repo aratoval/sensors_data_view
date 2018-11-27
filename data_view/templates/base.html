@@ -6,13 +6,14 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <!-- Bootstrap CSS -->
-
+    
     <link rel="stylesheet" content="text/css" href="{% static "css/style.css" %}">
     <title>{% block title %}{% endblock %}</title>
     {% block script %}
-   {% endblock %}
+    {% endblock %}
+      
   </head>
   <body class="body-background">
 
@@ -41,7 +42,7 @@
             </p>
         </div>
 
-        <h1 class="header-h1">Welcome in Project Utopia home page!!!</h1>
+        <h1 class="header-h1">Welcome to the home page of the Utopia Project!!!</h1>
 
     {% if request.user.is_authenticated %}
     <div class="div-top">

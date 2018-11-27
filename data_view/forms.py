@@ -2,9 +2,6 @@ from django import forms
 from datetime import datetime
 from data_view.models import Sensors
 
-from django.core.exceptions import ValidationError
-from django.core.validators import EmailValidator, URLValidator
-
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=64)
