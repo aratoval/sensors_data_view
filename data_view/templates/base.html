@@ -21,31 +21,68 @@
 	</div>
 	
 	<div class="menu-div">
-		<input 
-			type="button" 
-			name="login-button" 
-			value="Login" 
-			class="menu-login-button" 
-			onmouseenter="enterColor(this)" 
-			onmouseleave="leaveColor(this)"
-			onmousedown="onClickColor(this)"
-			onmouseup="notClickColor(this)">
+        <button class="menu-login-button"
+                onclick="login()"
+                onmouseenter="enterColor(this)"
+                onmouseleave="leaveColor(this)"
+                onmousedown="onClickColor(this)"
+                onmouseup="notClickColor(this)">
+            Login
+        </button>
+
+       {% if not request.user.is_authenticated %}
+        <div id="login-div" class="modal">
+
+            <form class="modal-content animate" action="{% url 'index' %}" method="post">
+
+                <div class="imgcontainer">
+                    <span   onclick="cancel()"
+                            class="close"
+                            title="Close Modal">
+                        &times;
+                    </span>
+                </div>
+
+                <div class="container">
+                    {% csrf_token %}
+                    {{ login_form.as_p }}
+                    <input class="login-button" type="submit" value="Login">
+                    <button type="button"
+                            onclick="cancel()"
+                            class="cancelbtn">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+            {% else %}
+            <form action="{% url 'logout-view' %}" method="post">
+                {% csrf_token %}
+                <input class="login-button" type="submit" value="Logout {{ request.user }}">
+            </form>
+            {% endif %}
+            <div class="message-center">
+                {% if message %}
+                {{ message }}
+                {% endif %}
+            </div>
+        </div>
 			
 		<div class="menu-div-div">
 			<ol>
-                <a href="{% url "index" %}">
 				<li>
-					<input 
-						type="button" 
-						name="home-button" 
-						value="Home" 
-						class="menu-button" 
-						onmouseenter="enterColor(this)" 
-						onmouseleave="leaveColor(this)"
-						onmousedown="onClickColor(this)"
-						onmouseup="notClickColor(this)">
+                    <a href="{% url "index" %}">
+                        <input
+                            type="button"
+                            name="home-button"
+                            value="Home"
+                            class="menu-button"
+                            onmouseenter="enterColor(this)"
+                            onmouseleave="leaveColor(this)"
+                            onmousedown="onClickColor(this)"
+                            onmouseup="notClickColor(this)">
+                    </a>
 				</li>
-                </a>
+
                 <a href="{% url "view-sensors" %}">
 				<li>
 					<input 
@@ -90,21 +127,37 @@
 	</footer>	
 	
 	<script type="text/javascript">
-	function onClickColor(x) {
-			x.style.backgroundColor = '#007849';
-	}
+        var modal = document.getElementById('login-div');
 
-	function notClickColor(x) {
-			x.style.backgroundColor = '#ffce00';
-	}
-	
-		function enterColor(x) {
-			x.style.backgroundColor = '#0375b4';
-	}
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
 
-	function leaveColor(x) {
-			x.style.backgroundColor = '#ffce00';
-	}
+        function login() {
+            document.getElementById('login-div').style.display='block';
+        }
+
+        function cancel() {
+            document.getElementById('login-div').style.display='none'
+        }
+
+        function onClickColor(x) {
+                x.style.backgroundColor = '#007849';
+        }
+
+        function notClickColor(x) {
+                x.style.backgroundColor = '#ffce00';
+        }
+
+            function enterColor(x) {
+                x.style.backgroundColor = '#0375b4';
+        }
+
+        function leaveColor(x) {
+                x.style.backgroundColor = '#ffce00';
+        }
 	</script>
 </body>
 </html>
