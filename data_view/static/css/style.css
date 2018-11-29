@@ -1,74 +1,98 @@
-.body-background{
-    background-color: #0375b4;
+.body-style {
+	background-color: #0375b4;
 }
 
-.login{
-    float: right;
-    background-color: #ffce00;
-    height: 100%;
+.header-div {
+	position: absolute;
+	background-color: #007849;
+	width: 100vw; 
+	height: 15vh;
+	min-height: 50px;
+	margin-top: 5vh;
+	text-align: center;
 }
 
-.login-form{
-    padding: 10px;
+.header-div h1 {
+	margin-top: 5vh;
+	margin-right: 15vw;
+
+	color: #ffce00;
 }
 
-.login-button{
-    width: 100%;
+.content-div {
+	position: absolute;
+	top: 20.8vh;
+	width: 83.8vw;
+	height: 59.6vh;
+	text-align: center;
+	margin-right: 5vw;
 }
 
-.center-content{
-    text-align: center;
+.content-div div {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-.side-by-side{
-    display: inline-block;
-    vertical-align: top;
+
+.menu-div {
+	background-color: #007849;
+	position: absolute;
+	right: 5vw;
+	height: 100vh;
+	width: 10vw;
+	min-width: 50px;
 }
 
-.img-base{
-    width: 600px;
-    height: 580px;
-    display: inline-block;
-    vertical-align: top;
+.menu-login-button {
+	background-color: #ffce00;
+	position: absolute;
+	width: 10vw;
+	height: 5vh;
+	top: 25vh;
+	min-height: 25px;
 }
 
-.footer-div-content{
-    width: 85%;
-
+.menu-div-div {
+	background-color: #ffceff;
+	position: absolute;
+	width: 10vw;
+	top: 38vh;
+	min-height: 25px;
 }
 
-.footer-div-content p{
-    text-align: center;
+.menu-div-div ol {
+    padding: 0;
+    margin: 0;
 }
 
-.header-div-content p{
-    text-align: center;
-    width: 85%;
+.menu-div-div li {
+    list-style-type: none;
 }
 
-.header-h1{
-    width: 85%;
-    text-align: center;
+.menu-button {
+	background-color: #ffce00;
+	width: 10vw;
+	height: 5vh;
 }
 
-.content-div{
-    width: 85%;
+.footer-style {
+	position: absolute;
+	bottom: 3vh;
+	background-color: #007849;
+	width: 100vw;
+	height: 15vh;
+	min-height: 50px;
+	text-align: center;
 }
 
-.menu-div{
-    background-color: #007849;
-    width: 30%;
-    margin-right: 13%;
+.footer-style h4 {
+	vertical-align: middle;
+	margin-right: 15vw;
+	margin-top: 5vh;
 }
 
-.menu-div div{
-    width: 15%;
-
+.img-base {
+    height: 35vh;
 }
-
-.div-top{
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-}
-

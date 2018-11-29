@@ -13,7 +13,9 @@
             <th>Is active</th>
             <th>Add date</th>
             <th>Remove date</th>
+            {% if request.user.is_authenticated %}
             <th>Delete sensor?</th>
+            {% endif %}
         </tr>
 
         {% for sensor in sensors %}

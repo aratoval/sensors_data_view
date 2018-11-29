@@ -1,80 +1,110 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
+<html>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <!-- Bootstrap CSS -->
-    
     <link rel="stylesheet" content="text/css" href="{% static "css/style.css" %}">
     <title>{% block title %}{% endblock %}</title>
     {% block script %}
     {% endblock %}
-      
-  </head>
-  <body class="body-background">
+</head>
+<body class="body-style">
+	<div class="content-div">
 
-    <header>
+            {% block content %}
+            {% endblock %}
 
-        <div class="login">
+	</div>
+	<div class="header-div">
+		<h1>Welcome to the home page of the Utopia Project!!!</h1>
+	</div>
+	
+	<div class="menu-div">
+		<input 
+			type="button" 
+			name="login-button" 
+			value="Login" 
+			class="menu-login-button" 
+			onmouseenter="enterColor(this)" 
+			onmouseleave="leaveColor(this)"
+			onmousedown="onClickColor(this)"
+			onmouseup="notClickColor(this)">
+			
+		<div class="menu-div-div">
+			<ol>
+                <a href="{% url "index" %}">
+				<li>
+					<input 
+						type="button" 
+						name="home-button" 
+						value="Home" 
+						class="menu-button" 
+						onmouseenter="enterColor(this)" 
+						onmouseleave="leaveColor(this)"
+						onmousedown="onClickColor(this)"
+						onmouseup="notClickColor(this)">
+				</li>
+                </a>
+                <a href="{% url "view-sensors" %}">
+				<li>
+					<input 
+						type="button" 
+						name="sensors-view-button" 
+						value="View sensors" 
+						class="menu-button" 
+						onmouseenter="enterColor(this)" 
+						onmouseleave="leaveColor(this)"
+						onmousedown="onClickColor(this)"
+						onmouseup="notClickColor(this)">
+				</li>
+                </a>
+				<li>
+					<input 
+						type="button" 
+						name="plot-data-button" 
+						value="Plot data" 
+						class="menu-button" 
+						onmouseenter="enterColor(this)" 
+						onmouseleave="leaveColor(this)"
+						onmousedown="onClickColor(this)"
+						onmouseup="notClickColor(this)">
+				</li>
+				<li>
+					<input 
+						type="button" 
+						name="other-button" 
+						value="Other" 
+						class="menu-button" 
+						onmouseenter="enterColor(this)" 
+						onmouseleave="leaveColor(this)"
+						onmousedown="onClickColor(this)"
+						onmouseup="notClickColor(this)">
+				</li>
+			</ol>
+		</div>
+	</div>
+	
+	<footer class="footer-style">
+        <h4>Today is {{ now }} | version: {{ version }}</h4>
+	</footer>	
+	
+	<script type="text/javascript">
+	function onClickColor(x) {
+			x.style.backgroundColor = '#007849';
+	}
 
-            {% if not request.user.is_authenticated %}
-                <form class="login-form" action="{% url 'index' %}" method="post">
-                    {% csrf_token %}
-                    {{ login_form.as_p }}
-                    <input class="login-button" type="submit" value="Login">
-                </form>
-            {% else %}
-                <form action="{% url 'logout-view' %}" method="post">
-                    {% csrf_token %}
-                    <input class="login-button" type="submit" value="Logout {{ request.user }}">
-                </form>
-            {% endif %}
+	function notClickColor(x) {
+			x.style.backgroundColor = '#ffce00';
+	}
+	
+		function enterColor(x) {
+			x.style.backgroundColor = '#0375b4';
+	}
 
-            <p>
-            <center>{% if message %}
-                {{ message }}
-            {% endif %}
-        </center>
-            </p>
-        </div>
-
-        <h1 class="header-h1">Welcome to the home page of the Utopia Project!!!</h1>
-
-    {% if request.user.is_authenticated %}
-    <div class="div-top">
-    <div class="menu-div center-content">
-        <div class="side-by-side">
-            <a href="{% url "index" %}">Home</a>
-        </div>
-        <div class="side-by-side">
-            <a href="{% url "view-sensors" %}">Sensors</a>
-        </div>
-    </div>
-    <br>
-    </div>
-    {% endif %}
-    </header>
-
-
-        {% block content %}
-        {% endblock %}
-
-
-    <footer>
-        <div class="footer-div-content">
-        <p><strong>
-            Today is {{ now }}
-            | version: {{ version }}
-        </strong>
-        </p>
-            <p>
-            <center><h1>Jestem daltonistą :p</h1></center>
-            </p>
-        </div>
-    </footer>
-  </body>
+	function leaveColor(x) {
+			x.style.backgroundColor = '#ffce00';
+	}
+	</script>
+</body>
 </html>

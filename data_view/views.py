@@ -73,8 +73,8 @@ class SensorAddView(LoginRequiredMixin, View):
 
 
 @method_decorator(csrf_exempt, name='dispatch')
-class SensorsView(LoginRequiredMixin, View):
-    permission_required = '/'
+class SensorsView(View):
+#    permission_required = '/'
 
     def get(self, request):
         sensors = Sensors.objects.all()
