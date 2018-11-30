@@ -1,0 +1,23 @@
+Looking in indexes: https://pypi.org/simple, https://www.piwheels.org/simple
+Collecting pyopenssl
+  Downloading https://files.pythonhosted.org/packages/96/af/9d29e6bd40823061aea2e0574ccb2fcf72bfd6130ce53d32773ec375458c/pyOpenSSL-18.0.0-py2.py3-none-any.whl (53kB)
+Collecting flask
+  Using cached https://files.pythonhosted.org/packages/7f/e7/08578774ed4536d3242b14dacb4696386634607af824ea997202cd0edb4b/Flask-1.0.2-py2.py3-none-any.whl
+Requirement already satisfied: cryptography>=2.2.1 in /home/pi/Programowanie/Python/Projekt_CodersLab/venvRpi/lib/python3.5/site-packages (from pyopenssl) (2.4.1)
+Requirement already satisfied: six>=1.5.2 in /home/pi/Programowanie/Python/Projekt_CodersLab/venvRpi/lib/python3.5/site-packages (from pyopenssl) (1.11.0)
+Collecting Jinja2>=2.10 (from flask)
+  Using cached https://files.pythonhosted.org/packages/7f/ff/ae64bacdfc95f27a016a7bed8e8686763ba4d277a78ca76f32659220a731/Jinja2-2.10-py2.py3-none-any.whl
+Collecting itsdangerous>=0.24 (from flask)
+  Using cached https://files.pythonhosted.org/packages/76/ae/44b03b253d6fade317f32c24d100b3b35c2239807046a4c953c7b89fa49e/itsdangerous-1.1.0-py2.py3-none-any.whl
+Collecting click>=5.1 (from flask)
+  Using cached https://files.pythonhosted.org/packages/fa/37/45185cb5abbc30d7257104c434fe0b07e5a195a6847506c074527aa599ec/Click-7.0-py2.py3-none-any.whl
+Collecting Werkzeug>=0.14 (from flask)
+  Using cached https://files.pythonhosted.org/packages/20/c4/12e3e56473e52375aa29c4764e70d1b8f3efa6682bef8d0aae04fe335243/Werkzeug-0.14.1-py2.py3-none-any.whl
+Requirement already satisfied: asn1crypto>=0.21.0 in /home/pi/Programowanie/Python/Projekt_CodersLab/venvRpi/lib/python3.5/site-packages (from cryptography>=2.2.1->pyopenssl) (0.24.0)
+Requirement already satisfied: idna>=2.1 in /home/pi/Programowanie/Python/Projekt_CodersLab/venvRpi/lib/python3.5/site-packages (from cryptography>=2.2.1->pyopenssl) (2.7)
+Requirement already satisfied: cffi!=1.11.3,>=1.7 in /home/pi/Programowanie/Python/Projekt_CodersLab/venvRpi/lib/python3.5/site-packages (from cryptography>=2.2.1->pyopenssl) (1.11.5)
+Collecting MarkupSafe>=0.23 (from Jinja2>=2.10->flask)
+  Downloading https://www.piwheels.org/simple/markupsafe/MarkupSafe-1.1.0-cp35-cp35m-linux_armv6l.whl
+Requirement already satisfied: pycparser in /home/pi/Programowanie/Python/Projekt_CodersLab/venvRpi/lib/python3.5/site-packages (from cffi!=1.11.3,>=1.7->cryptography>=2.2.1->pyopenssl) (2.19)
+Installing collected packages: pyopenssl, MarkupSafe, Jinja2, itsdangerous, click, Werkzeug, flask
+Successfully installed Jinja2-2.10 MarkupSafe-1.1.0 Werkzeug-0.14.1 click-7.0 flask-1.0.2 itsdangerous-1.1.0 pyopenssl-18.0.0
