@@ -1,43 +1,45 @@
 {% extends 'base.html' %}
+
 {% load static %}
+
 {% block content %}
-    <div class="content-div">
+
     <div class="div-top">
-    <form>
-    <table border="1">
+        <form>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Sensor type</th>
+        <th>Location</th>
+        <th>Is active</th>
+        <th>Add date</th>
+        <th>Remove date</th>
+        {% if request.user.is_authenticated %}
+        <th>Delete sensor?</th>
+        {% endif %}
+    </tr>
+
+    {% for sensor in sensors %}
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Sensor type</th>
-            <th>Location</th>
-            <th>Is active</th>
-            <th>Add date</th>
-            <th>Remove date</th>
+            <td>{{ sensor.id }}</td>
+            <td>{{ sensor.name }}</td>
+            <td>{{ sensor.sensor_type }}</td>
+            <td>{{ sensor.location }}</td>
+            <td>{{ sensor.is_active }}</td>
+            <td>{{ sensor.add_datetime }}</td>
+            <td>{{ sensor.remove_datetime }}</td>
             {% if request.user.is_authenticated %}
-            <th>Delete sensor?</th>
+            <td><input name="del" type="checkbox" value="{{ sensor.id }}"></td>
             {% endif %}
         </tr>
+    {% endfor %}
+</table>
+{% if request.user.is_authenticated %}
+<input type="submit" value="Delete sensor" formmethod="post">
+<input type="button" value="Add sensor" onclick="window.location.href='{% url "add-sensor" %}'"/>
+{% endif %}
+</form>
+    </div>
 
-        {% for sensor in sensors %}
-            <tr>
-                <td>{{ sensor.id }}</td>
-                <td>{{ sensor.name }}</td>
-                <td>{{ sensor.sensor_type }}</td>
-                <td>{{ sensor.location }}</td>
-                <td>{{ sensor.is_active }}</td>
-                <td>{{ sensor.add_datetime }}</td>
-                <td>{{ sensor.remove_datetime }}</td>
-                {% if request.user.is_authenticated %}
-                <td><input name="del" type="checkbox" value="{{ sensor.id }}"></td>
-                {% endif %}
-            </tr>
-        {% endfor %}
-    </table>
-    {% if request.user.is_authenticated %}
-    <input type="submit" value="Delete sensor" formmethod="post">
-    <input type="button" value="Add sensor" onclick="window.location.href='{% url "add-sensor" %}'"/>
-    {% endif %}
-    </form>
-    </div>
-    </div>
 {% endblock %}

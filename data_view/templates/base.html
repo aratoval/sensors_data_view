@@ -10,14 +10,18 @@
     {% endblock %}
 </head>
 <body class="body-style">
-	<div class="content-div">
 
-            {% block content %}
-            {% endblock %}
+	<div class="header-div">
+
+		<h1>Welcome to the home page of the Utopia Project!!!</h1>
 
 	</div>
-	<div class="header-div">
-		<h1>Welcome to the home page of the Utopia Project!!!</h1>
+
+	<div class="content-div">
+
+        {% block content %}
+        {% endblock %}
+
 	</div>
 	
 	<div class="menu-div">
@@ -68,8 +72,8 @@
                 {% endif %}
             </div>
         </div>
-			
-		<div class="menu-div-div">
+
+        <div class="menu-div-div">
 			<ol>
 				<li>
                     <a href="{% url "index" %}">
@@ -98,6 +102,7 @@
 						onmouseup="notClickColor(this)">
 				</li>
                 </a>
+                <a href="{%  url "data-view" %}">
 				<li>
 					<input 
 						type="button" 
@@ -109,6 +114,7 @@
 						onmousedown="onClickColor(this)"
 						onmouseup="notClickColor(this)">
 				</li>
+                </a>
 				<li>
 					<input 
 						type="button" 
@@ -122,44 +128,16 @@
 				</li>
 			</ol>
 		</div>
+
 	</div>
 	
 	<footer class="footer-style">
+
         <h4>Today is {{ now }} | version: {{ version }}</h4>
+
 	</footer>	
 	
-	<script type="text/javascript">
-        var modal = document.getElementById('login-div');
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        };
-
-        function login() {
-            document.getElementById('login-div').style.display='block';
-        }
-
-        function cancel() {
-            document.getElementById('login-div').style.display='none'
-        }
-
-        function onClickColor(x) {
-                x.style.backgroundColor = '#007849';
-        }
-
-        function notClickColor(x) {
-                x.style.backgroundColor = '#ffce00';
-        }
-
-            function enterColor(x) {
-                x.style.backgroundColor = '#0375b4';
-        }
-
-        function leaveColor(x) {
-                x.style.backgroundColor = '#ffce00';
-        }
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js">
 	</script>
 </body>
 </html>

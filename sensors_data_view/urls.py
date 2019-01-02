@@ -18,7 +18,8 @@ from django.urls import path
 from django.conf.urls import handler404, handler500
 from data_view.views import my_handler404
 from django.conf.urls import url
-from data_view.views import SensorAddView, SensorsView, Index, LogoutView
+from data_view.views import SensorAddView, SensorsView, Index, LogoutView, \
+    DataView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -29,6 +30,7 @@ urlpatterns = [
     url(r'^add_sensor/', SensorAddView.as_view(), name='add-sensor'),
     url(r'^view_sensors/', SensorsView.as_view(), name='view-sensors'),
     url(r'^logout', LogoutView.as_view(), name='logout-view'),
+    url(r'^view_data', DataView.as_view(), name='data-view')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = my_handler404

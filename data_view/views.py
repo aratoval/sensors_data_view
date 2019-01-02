@@ -22,7 +22,6 @@ def my_handler404(request, exception, template_name="404.html"):
     return response
 
 
-# Create your views here.
 class Index(View):
 
     def get(self, request):
@@ -90,3 +89,12 @@ class SensorsView(View):
             for i in request.POST.getlist('del'):
                 Sensors.objects.filter(pk=i).delete()
             return HttpResponseRedirect('/view_sensors')
+
+class DataView(View):
+
+    def get(self, request):
+
+        ctx = {
+
+        }
+        return render(request, 'view_data.html', ctx)

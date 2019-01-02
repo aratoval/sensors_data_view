@@ -2,16 +2,60 @@
 {% load static %}
 
 {% block script %}
-<script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
-   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
-   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.gammel.js"></script>
-   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.zune.js"></script>
-   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.carbon.js"></script>
-   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.ocean.js"></script>
+    <script>
+
+        window.onload = function () {
+
+        var dps = []; // dataPoints
+        var chart = new CanvasJS.Chart("chartContainer", {
+            title :{
+                text: "Dynamic Data"
+            },
+            axisY: {
+                includeZero: false
+            },
+            data: [{
+                type: "line",
+                dataPoints: dps
+            }]
+        });
+
+        var xVal = 0;
+        var yVal = 100;
+        var updateInterval = 1000;
+        var dataLength = 20; // number of dataPoints visible at any point
+
+        var updateChart = function (count) {
+
+            count = count || 1;
+
+            for (var j = 0; j < count; j++) {
+                yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
+                dps.push({
+                    x: xVal,
+                    y: yVal
+                });
+                xVal++;
+            }
+
+            if (dps.length > dataLength) {
+                dps.shift();
+            }
+
+            chart.render();
+        };
+
+        updateChart(dataLength);
+        setInterval(function(){updateChart()}, updateInterval);
+
+        }
+    </script>
 {% endblock %}
 
 {% block content %}
-    <div class="center-content content-div">
-    <div id="chart-1">{{ output|safe }}</div>
+
+    <div class="content-div">
+        <div class="div-top" id="chartContainer"></div>
     </div>
+
 {% endblock %}
