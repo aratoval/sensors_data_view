@@ -5,14 +5,17 @@ from django.views.decorators.csrf import csrf_exempt
 
 from django.http import HttpResponseRedirect
 
-from data_view.forms import AddSensorForm
+from data_view.forms import AddSensorForm, LoginForm
 from data_view.models import Sensors
-from data_view.forms import LoginForm
+
 
 from django.utils.decorators import method_decorator
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -90,11 +93,23 @@ class SensorsView(View):
                 Sensors.objects.filter(pk=i).delete()
             return HttpResponseRedirect('/view_sensors')
 
+
 class DataView(View):
 
     def get(self, request):
-
         ctx = {
 
         }
         return render(request, 'view_data.html', ctx)
+
+
+class Data(APIView):
+
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        data = {
+            'data': [12, 19, 3, 5, 2, 3]
+        }
+        return Response(data)

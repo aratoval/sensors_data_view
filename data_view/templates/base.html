@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" content="text/css" href="{% static "css/style.css" %}">
     <title>{% block title %}{% endblock %}</title>
+
     {% block script %}
     {% endblock %}
+
 </head>
 <body class="body-style">
 
@@ -136,8 +138,9 @@
         <h4>Today is {{ now }} | version: {{ version }}</h4>
 
 	</footer>	
-	
-	<script src="https://canvasjs.com/assets/script/canvasjs.min.js">
-	</script>
+
+    {% block script2 %}
+    {% endblock %}
+
 </body>
 </html>
